@@ -1,6 +1,6 @@
 const Navbar = () => {
     return (
-        <nav className="bg-white border-gray-200 ">
+        <nav className="fixed z-10 top-0 w-full h-max bg-white border-gray-200 bottom-1 shadow-sm">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-around mx-auto p-4">
                 <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="logo_small.jpeg" className="h-8" alt="Flowbite Logo" />
