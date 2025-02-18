@@ -1,32 +1,24 @@
 import './App.css'
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import DialogCard from "./components/DialogCard";
-import HowDoReferSection from "./components/HowDoReferSection";
-import Footer from "./components/Footer";
-import FAQ from "./components/FAQ";
-import RefralForm from "./components/RefralForm";
+import Navbar from "./components/Navbar"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RefralForm from "../pages/RefralForm"
+import Home from '../pages/home'; 
 
 const App = () => {
-  const [showDialog, setShowDialog] = useState(false); 
+  // const [showDialog, setShowDialog] = useState(false); 
 
   return (
     <div >
-      <Navbar />
-      <Hero />
-      <HowDoReferSection />
+      <Navbar /> 
 
-      <button
-        className="fixed bottom-10 right-10 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-        onClick={() => setShowDialog(true)}
-      >
-        Open Dialog
-      </button>
-      <FAQ />
-      <Footer />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/refer" element={<RefralForm />} /> 
+        </Routes>
+      </Router>
 
-      {showDialog && <DialogCard title="Hello!" message="This is a dialog message." onClose={() => setShowDialog(false)} />}
+      {/* {showDialog && <DialogCard title="Hello!" message="This is a dialog message." onClose={() => setShowDialog(false)} />} */}
 
     </div>
   );

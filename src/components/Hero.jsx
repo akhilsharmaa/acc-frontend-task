@@ -1,4 +1,4 @@
-import ReferNowButton from './ReferNowButton';
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -10,11 +10,11 @@ const Hero = () => {
               Let`s Learn & Earn
             </h2>
             <br/>
-            <p className="mb-6 font-normal text-3xl font-light text-black">
+            <p className="mb-6 text-3xl font-light text-black">
               Get a chance to win up-tp <span className="text-4xl font-bold font- text-blue-500">Rs. 15000</span>
             </p>  
             <br/>
-            <ReferNowButton/>
+            <Link  to="refer">Home</Link>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src="image-101.png" alt="mockup" />

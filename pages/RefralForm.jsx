@@ -102,9 +102,10 @@ const RefralForm = ({ onClose }) => {
         }
     }, [refreeFirstNameValue]);
 
+
     return (
-        <div className="fixed w-full top-0 bg-transparent-100">
-            <div className="mx-auto bg-gray-100 max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className=" w-full bg-gray-100">
+            <div className="mx-auto  max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Refer Now & Earn</h1>
                     <p className="mt-4 text-gray-500">
@@ -213,13 +214,7 @@ const RefralForm = ({ onClose }) => {
                         />
                     </div>
 
-                    <div className="flex items-center justify-between">
-                        <button
-                            onClick={onClose}
-                            className="mt-4 text-black px-4 py-2 rounded hover:text-red-600"
-                        >
-                            CLOSE
-                        </button>
+                    <div className="flex items-center justify-end"> 
 
                         <button
                             type="submit"
@@ -228,7 +223,7 @@ const RefralForm = ({ onClose }) => {
                             }`}
                             disabled={!isFormValid}
                         >
-                            Create Referral
+                            REFER NOW 
                         </button>
                     </div>
                 </form>
