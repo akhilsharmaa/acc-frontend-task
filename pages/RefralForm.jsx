@@ -118,6 +118,23 @@ const RefralForm = () => {
         }
     }, [refreeFirstNameValue, isFormInteracted]);
 
+
+
+
+        // Validating both email's are not same 
+        useEffect(() => {
+            if (!isFormInteracted) return; // Only validate if the form has been interacted with
+    
+            if (refreeEmailValue == myEmailValue) {
+                setRefreeEmailValidateError("You can't refer yourself! (both email's can't be same)");
+            } else{
+                setRefreeEmailValidateError("");
+            }
+
+        }, [refreeEmailValue, myEmailValue]);
+
+        
+
     const handleSubmit = async () => {
         setIsFormInteracted(true); // Set form as interacted when submitting
 
