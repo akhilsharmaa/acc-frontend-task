@@ -10,6 +10,9 @@ const RefralForm = ({onClose}) => {
     const [refreeFirstNameValue, setRefreeFirstNameValue] = useState();
     const [refreeLastNameValue, setRefreeLastNameValue] = useState();  
 
+    const [refralcode, setRefralcode] = useState();  
+    const [refralcodeValidateError, setRefralcodeValidateError] = useState(false);
+
     const [myEmailValidateError, setMyEmailValidateError] = useState(false);
     const [myFirstNameValidateError, setMyFirstNameValidateError] = useState(false); 
     const [refreeEmailValidateError, setRefreeEmailValidateError] = useState(false);
@@ -31,7 +34,7 @@ const RefralForm = ({onClose}) => {
     // validating the refree FIRST NAME 
     useEffect(() => {
         if (!myFirstNameValue) {
-            setMyFirstNameValidateError("Email can't be blank, please enter email,");
+            setMyFirstNameValidateError("First name  can't be blank, please enter email,");
         } else if (myFirstNameValue.length < 3) {
             setMyFirstNameValidateError("First name should be atlease 3 character.");
         } else {
@@ -55,13 +58,25 @@ const RefralForm = ({onClose}) => {
     // validating the refree LAST NAME  
     useEffect(() => {
         if (!refreeFirstNameValue) {
-            setRefreeFirstNameValidateError("Email can't be blank, please enter email,");
+            setRefreeFirstNameValidateError("First name can't be blank, please enter email,");
         } else if (refreeFirstNameValue.length < 3) {
             setRefreeFirstNameValidateError("First name should be atlease 3 character.");
         } else {
             setRefreeFirstNameValidateError(''); // Clear error if email is valid
         }
     }, [refreeFirstNameValue]);
+
+
+    // validating the refree LAST NAME  
+    useEffect(() => {
+        if (!refralcode) {
+            setRefralcodeValidateError("First name can't be blank, please enter email,");
+        } else if (refralcode.length !== 6) {
+            setRefralcodeValidateError("Please enter the valid referal code (must be 6-digit code)");
+        } else {
+            setRefralcodeValidateError(''); // Clear error if email is valid
+        }
+    }, [refralcode]);
 
 
     return (
@@ -73,13 +88,38 @@ const RefralForm = ({onClose}) => {
                     Refer Now & Earn
                 </h1>
 
-                <p className="mt-4 text-red-500">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla eaque error neque
-                ipsa culpa autem, at itaque nostrum!
+                <p className="mt-4 text-gray-500">
+                    Refer your friend and earn the points. on succeffuly creating the 
+                    referral you both will get a email. 
                 </p>
             </div>
 
             <form action="#" className="mx-auto mt-8 mb-0 max-w-md space-y-4"> 
+
+                <div className="p-6 border-2 rounded-lg border-dashed bg-blue-50">
+                    <p className="my-2 text-xl font-medium text--600"> 
+                        Enter referral Code
+                    </p>
+                    
+                    {/* Refreee email */}
+                    {/* <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900">Your email</label> */}
+                    <input 
+                        type="text" 
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " 
+                        value={refralcode} 
+                        onChange={e => setRefralcode(e.target.value)} 
+                        maxLength={6}
+                        placeholder="Refral Code"/>
+                    {
+                        refralcodeValidateError && 
+                        <p id="helper-text-explanation" className="p-1 flex text-sm text-gray-500 "> 
+                            <img className=" w-3 opacity-50 h-3 m-1" src="error_icon.png"/>
+                            {refralcodeValidateError}
+                        </p>
+                    }
+                </div>
+
+                <hr/>
 
                 <div>
                     <p className="my-2 text-xl font-medium text-blue-600"> 
@@ -94,8 +134,9 @@ const RefralForm = ({onClose}) => {
                         placeholder="myemail@gmail.com"/>
                     
                     {myEmailValidateError &&  
-                        <p id="helper-text-explanation" className="p-1 text-sm text-red-400 "> 
-                        {myEmailValidateError} 
+                        <p id="helper-text-explanation" className="p-1 flex text-sm text-gray-500 "> 
+                            <img className=" w-3 opacity-50 h-3 m-1" src="error_icon.png"/> 
+                            {myEmailValidateError} 
                         </p>
                     }
 
@@ -109,8 +150,9 @@ const RefralForm = ({onClose}) => {
                         placeholder="First Name"/>
                     
                     {myFirstNameValidateError &&  
-                        <p id="helper-text-explanation" className="p-1 text-sm text-red-500 dark:text-gray-500"> 
-                        {myFirstNameValidateError} 
+                        <p id="helper-text-explanation" className="p-1 flex text-sm text-gray-500 "> 
+                            <img className=" w-3 opacity-50 h-3 m-1" src="error_icon.png"/>
+                            {myFirstNameValidateError} 
                         </p>
                     }
 
@@ -144,8 +186,9 @@ const RefralForm = ({onClose}) => {
                         placeholder="refreee@gmail.com"/>
                     {
                         refreeEmailValidateError && 
-                        <p id="helper-text-explanation" className="mt-0 text-sm text-red-500 dark:text-gray-500">
-                        {refreeEmailValidateError}
+                        <p id="helper-text-explanation" className="p-1 flex text-sm text-gray-500 "> 
+                            <img className=" w-3 opacity-50 h-3 m-1" src="error_icon.png"/>
+                            {refreeEmailValidateError}
                         </p>
                     }
 
@@ -159,7 +202,8 @@ const RefralForm = ({onClose}) => {
                         placeholder="First Name"/>
                     {
                         refreeFirstNameValidateError && 
-                        <p id="helper-text-explanation" className="mt-1 text-sm text-red-500 dark:text-gray-500">
+                        <p id="helper-text-explanation" className="p-1 flex text-sm text-gray-500 "> 
+                            <img className=" w-3 opacity-50 h-3 m-1" src="error_icon.png"/>
                         {refreeFirstNameValidateError}
                         </p>
                     }
