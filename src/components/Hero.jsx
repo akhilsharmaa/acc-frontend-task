@@ -1,3 +1,5 @@
+import ReferNowButton from './ReferNowButton';
+
 const Hero = () => {
   return (
     <section className="flex flex-row justify-center items-center">
@@ -12,9 +14,7 @@ const Hero = () => {
               Get a chance to win up-tp <span className="text-4xl font-bold font- text-blue-500">Rs. 15000</span>
             </p>  
             <br/>
-            <button type="button" className="px-5 py-3 text-xl  text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Refer Now
-            </button>
+            <ReferNowButton/>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src="image-101.png" alt="mockup" />
