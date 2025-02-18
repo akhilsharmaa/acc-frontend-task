@@ -5,7 +5,7 @@ const HowDoReferSection = () => {
     <section className=" text-center py-10 content-center bg-primary "> 
         <p className="text-2xl text-black" >How Do i <span className="text-blue-800">Refer ?</span> </p>
         <img
-          className="my-10 m-auto only-desktop" 
+          className="my-10 w-2/3 m-auto only-desktop" 
           src="image-102.png"/> 
         <img 
           className="my-10 m-auto only-phone" 

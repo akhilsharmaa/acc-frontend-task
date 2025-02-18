@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-<section className="bg-white py-16 ">
+<section className="bg-white  ">
     <div className="m-5">
       
-    <div className="grid lg:w-2/3 bg-primary px-4 py-8  rounded-lg shadow-xl mx-auto lg:gap-8 xl:gap-0  lg:py-16 lg:grid-cols-12">
+    <div className="grid lg:w-2/3 bg-primary px-4 py-4  rounded-lg shadow-xl mx-auto lg:gap-0 xl:gap-0  lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7 m-8">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
               Let`s Learn <br/> & Earn</h1>
