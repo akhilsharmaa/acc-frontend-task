@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+
+.hero-container{
+    background-color: #eef5ff;
+}
