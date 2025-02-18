@@ -14,7 +14,10 @@ const Hero = () => {
               Get a chance to win up-tp <span className="text-4xl font-bold font- text-blue-500">Rs. 15000</span>
             </p>  
             <br/>
-            <Link  to="refer">Home</Link>
+            <Link  to="refer"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-4 me-4 mb-4">
+               Refer Now
+            </Link>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img src="image-101.png" alt="mockup" />
