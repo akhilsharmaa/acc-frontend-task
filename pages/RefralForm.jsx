@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 
 const API_URL = "https://accredian-backend-task-7yn9.onrender.com"; 
 
-// eslint-disable-next-line react/prop-types
-const RefralForm = ({ onClose }) => {
+const RefralForm = () => {
     const [myEmailValue, setMyEmailValue] = useState("");
     const [myFirstNameValue, setMyFirstNameValue] = useState("");
     const [myLastNameValue, setMyLastNameValue] = useState("");
@@ -23,6 +22,7 @@ const RefralForm = ({ onClose }) => {
     const [responseSuccess, setResponseSuccess] = useState(false);
 
     const [isFormValid, setIsFormValid] = useState(false);
+    const [isFormInteracted, setIsFormInteracted] = useState(false); // New state variable
 
     // Validating every field form whenever any field changes
     useEffect(() => {
@@ -55,6 +55,8 @@ const RefralForm = ({ onClose }) => {
 
     // Validate the referral code
     useEffect(() => {
+        if (!isFormInteracted) return; // Only validate if the form has been interacted with
+
         if (!refralcode) {
             setRefralcodeValidateError("Referral code can't be blank, please enter code.");
         } else if (refralcode.length !== 6) {
@@ -62,10 +64,12 @@ const RefralForm = ({ onClose }) => {
         } else {
             setRefralcodeValidateError("");
         }
-    }, [refralcode]);
+    }, [refralcode, isFormInteracted]);
 
     // Validate the user's email
     useEffect(() => {
+        if (!isFormInteracted) return; // Only validate if the form has been interacted with
+
         if (!myEmailValue) {
             setMyEmailValidateError("Email can't be blank, please enter email.");
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(myEmailValue)) {
@@ -73,10 +77,12 @@ const RefralForm = ({ onClose }) => {
         } else {
             setMyEmailValidateError("");
         }
-    }, [myEmailValue]);
+    }, [myEmailValue, isFormInteracted]);
 
     // Validate the user's first name
     useEffect(() => {
+        if (!isFormInteracted) return; // Only validate if the form has been interacted with
+
         if (!myFirstNameValue) {
             setMyFirstNameValidateError("First name can't be blank, please enter your first name.");
         } else if (myFirstNameValue.length < 3) {
@@ -84,10 +90,12 @@ const RefralForm = ({ onClose }) => {
         } else {
             setMyFirstNameValidateError("");
         }
-    }, [myFirstNameValue]);
+    }, [myFirstNameValue, isFormInteracted]);
 
     // Validate the referee's email
     useEffect(() => {
+        if (!isFormInteracted) return; // Only validate if the form has been interacted with
+
         if (!refreeEmailValue) {
             setRefreeEmailValidateError("Email can't be blank, please enter email.");
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(refreeEmailValue)) {
@@ -95,10 +103,12 @@ const RefralForm = ({ onClose }) => {
         } else {
             setRefreeEmailValidateError("");
         }
-    }, [refreeEmailValue]);
+    }, [refreeEmailValue, isFormInteracted]);
 
     // Validate the referee's first name
     useEffect(() => {
+        if (!isFormInteracted) return; // Only validate if the form has been interacted with
+
         if (!refreeFirstNameValue) {
             setRefreeFirstNameValidateError("First name can't be blank, please enter first name.");
         } else if (refreeFirstNameValue.length < 3) {
@@ -106,11 +116,10 @@ const RefralForm = ({ onClose }) => {
         } else {
             setRefreeFirstNameValidateError("");
         }
-    }, [refreeFirstNameValue]);
-
+    }, [refreeFirstNameValue, isFormInteracted]);
 
     const handleSubmit = async () => {
-
+        setIsFormInteracted(true); // Set form as interacted when submitting
 
         const requestOptions = {
             method: 'POST',
@@ -175,7 +184,7 @@ const RefralForm = ({ onClose }) => {
                             type="text"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={refralcode}
-                            onChange={(e) => setRefralcode(e.target.value)}
+                            onChange={(e) => {setRefralcode(e.target.value); setIsFormInteracted(true);}}
                             maxLength={6}
                             placeholder="Referral Code"
                         />
@@ -195,7 +204,7 @@ const RefralForm = ({ onClose }) => {
                             type="email"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={myEmailValue}
-                            onChange={(e) => setMyEmailValue(e.target.value)}
+                            onChange={(e) => {setMyEmailValue(e.target.value); setIsFormInteracted(true);}}
                             placeholder="myemail@gmail.com"
                         />
                         {myEmailValidateError && (
@@ -209,7 +218,7 @@ const RefralForm = ({ onClose }) => {
                             type="text"
                             className="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={myFirstNameValue}
-                            onChange={(e) => setMyFirstNameValue(e.target.value)}
+                            onChange={(e) => {setMyFirstNameValue(e.target.value); setIsFormInteracted(true);}}
                             placeholder="First Name"
                         />
                         {myFirstNameValidateError && (
@@ -222,7 +231,7 @@ const RefralForm = ({ onClose }) => {
                         <input
                             type="text"
                             value={myLastNameValue}
-                            onChange={(e) => setMyLastNameValue(e.target.value)}
+                            onChange={(e) => {setMyLastNameValue(e.target.value); setIsFormInteracted(true);}}
                             className="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Last Name"
                         />
@@ -236,7 +245,7 @@ const RefralForm = ({ onClose }) => {
                             type="email"
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={refreeEmailValue}
-                            onChange={(e) => setRefreeEmailValue(e.target.value)}
+                            onChange={(e) => {setRefreeEmailValue(e.target.value); setIsFormInteracted(true);}}
                             placeholder="referee@gmail.com"
                         />
                         {refreeEmailValidateError && (
@@ -250,7 +259,7 @@ const RefralForm = ({ onClose }) => {
                             type="text"
                             className="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={refreeFirstNameValue}
-                            onChange={(e) => setRefreeFirstNameValue(e.target.value)}
+                            onChange={(e) =>  {setRefreeFirstNameValue(e.target.value); setIsFormInteracted(true);}}
                             placeholder="First Name"
                         />
                         {refreeFirstNameValidateError && (
@@ -264,7 +273,7 @@ const RefralForm = ({ onClose }) => {
                             type="text"
                             className="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value={refreeLastNameValue}
-                            onChange={(e) => setRefreeLastNameValue(e.target.value)}
+                            onChange={(e) => {setRefreeLastNameValue(e.target.value); setIsFormInteracted(true);}}
                             placeholder="Last Name"
                         />
                     </div>
