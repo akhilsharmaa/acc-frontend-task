@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import DialogCard from "./components/DialogCard"; 
 import HowDoReferSection from "./components/HowDoReferSection"; 
 import Footer from "./components/Footer"; 
+import FAQ from "./components/FAQ"; 
 
 const App = () => {
   const [showDialog, setShowDialog] = useState(false);
@@ -21,7 +22,7 @@ const App = () => {
       >
         Open Dialog
       </button>
-      
+      <FAQ/>
       <Footer/>
       
       {showDialog && <DialogCard title="Hello!" message="This is a dialog message." onClose={() => setShowDialog(false)} />}
