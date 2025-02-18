@@ -12,6 +12,9 @@ const Home = () => {
       <Hero />
       <HowDoReferSection />
       <FAQ />
+      <div className="m-auto lg:w-2/3 my-10">
+        <img  src="./footer-image.png"/>
+      </div>
       <Footer />
     </div>
   );

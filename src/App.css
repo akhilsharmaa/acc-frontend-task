@@ -1,11 +1,30 @@
 @import "tailwindcss";
 
 
-.hero-container{
+.hero-container {
     background-color: #eef5ff;
 }
 
 
-.bg-primary { 
+.bg-primary {
     background-color: #EEF5FF;
+}
+
+.only-desktop {
+    display: block;
+}
+
+.only-phone {
+    display: none;
+}
+
+/* Show .only-phone and hide .only-desktop on smaller screens */
+@media (max-width: 768px) {
+    .only-desktop {
+        display: none;
+    }
+
+    .only-phone {
+        display: block;
+    }
 }
