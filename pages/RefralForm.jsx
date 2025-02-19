@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Loading from "../src/components/Loading";
 
 const API_URL = "https://accredian-backend-task-7yn9.onrender.com"; 
 
@@ -322,7 +323,7 @@ const RefralForm = () => {
 
                     <div className="flex items-center justify-end"> 
 
-                        <button
+                        <a
                             type="submit"
                             className={`inline-block rounded-lg px-5 py-3 text-sm font-medium text-white ${
                                 isFormValid ? "bg-blue-500" : "bg-gray-400 cursor-not-allowed"
@@ -339,9 +340,11 @@ const RefralForm = () => {
                         }
 
                         Create Referral
-                        </button>
+                        </a>
                     </div>
-                </form> 
+                </form>
+                
+                {isloading && <Loading/>}
             </div>
         </div>
     );
